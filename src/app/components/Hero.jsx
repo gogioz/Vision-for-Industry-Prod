@@ -37,7 +37,7 @@ export default function Home() {
       <div className="w-full flex justify-center items-center lg:rounded-xl overflow-hidden ">
         <video
           ref={videoRef}
-          className="w-full lg:w-[80%] xl:w-[70%] h-auto lg:rounded-xl"
+          className="w-full lg:w-[80%] xl:w-[70%] 2xl:w-[60%] h-auto lg:rounded-xl"
           loop
           autoPlay
           playsInline
