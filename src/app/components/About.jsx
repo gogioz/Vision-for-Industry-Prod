@@ -19,7 +19,7 @@ export default function About({ lang }) {
           } justify-between items-center gap-10`}
         >
           {/* Text section */}
-          <div className="w-full xl:w-[70%] flex justify-center items-center px-2">
+          <div className="w-full xl:w-[70%] flex justify-center items-center px-4 lg:px-8">
             {lang === "en" ? (
               <p className="text-2xl font-bold text-[#0f204e] leading-relaxed  ">
                 VISION Industries is one of the leading companies in the field
