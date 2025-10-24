@@ -107,7 +107,7 @@ const Footer = ({ lang }) => {
                 type="text"
                 name="name"
                 placeholder={lang === "en" ? "Name" : "الاسم"}
-                className="p-3 rounded bg-[#0f204e] text-white placeholder:text-white placeholder:text-lg outline-none border-none"
+                className="p-3 rounded bg-[#0f204e] text-white placeholder:text-white placeholder:text-lg outline-none border-none w-[80%]"
               />
               <input
                 dir={lang === "en" ? "ltr" : "rtl"}
