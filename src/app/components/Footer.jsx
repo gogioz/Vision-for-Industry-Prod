@@ -100,7 +100,7 @@ const Footer = ({ lang }) => {
             <form
               ref={form}
               onSubmit={sendEmail}
-              className="flex flex-col gap-4 w-[80%]"
+              className="flex flex-col gap-4 "
             >
               <input
                 dir={lang === "en" ? "ltr" : "rtl"}
