@@ -34,7 +34,7 @@ const Footer = ({ lang }) => {
       className="w-screen text-[#0f204e] bg-white pb-12 md:px-0  overflow-x-hidden  2xl:px-3"
       dir="ltr"
     >
-      <div className="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-y-6 md:gap-4 items-start text-center px-4">
+      <div className="container  grid grid-cols-1 lg:grid-cols-3 gap-y-6 md:gap-4 items-start text-center px-4">
         {/* Contact Form */}
         <div className="text-center flex flex-col justify-center gap-y-4 h-full pt-14 2xl:gap-y-8 order-1 lg:order-2 ">
           <p
