@@ -95,7 +95,7 @@ const Footer = ({ lang }) => {
         </div>
 
         {/* Contact Form */}
-        <div className="flex justify-center items-center  2xl:pt-20  lg:order-2 px-12 ">
+        <div className="flex justify-center items-center  2xl:pt-20  lg:order-2 px-8 ">
           <div className="flex flex-col justify-center items-center gap-y-6 lg:pt-20 md:pt-12  ">
             <form
               ref={form}
