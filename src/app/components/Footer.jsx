@@ -31,7 +31,7 @@ const Footer = ({ lang }) => {
 
   return (
     <footer
-      className="w-screen text-[#0f204e] bg-white pb-12 md:px-0  overflow-x-hidden  2xl:px-3"
+      className=" text-[#0f204e] bg-white pb-12 md:px-0  overflow-x-hidden  2xl:px-3"
       dir="ltr"
     >
       <div className="container  grid grid-cols-1 lg:grid-cols-3 gap-y-6 md:gap-4 items-start text-center px-4">
@@ -96,7 +96,7 @@ const Footer = ({ lang }) => {
 
         {/* Contact Form */}
         <div className="flex justify-center items-center  2xl:pt-20  lg:order-2  ">
-          <div className="flex flex-col  gap-y-6 lg:pt-20 md:pt-12  ">
+          <div className="flex flex-col justify-center items-center   gap-y-6 lg:pt-20 md:pt-12  ">
             <form
               ref={form}
               onSubmit={sendEmail}
@@ -107,7 +107,7 @@ const Footer = ({ lang }) => {
                 type="text"
                 name="name"
                 placeholder={lang === "en" ? "Name" : "الاسم"}
-                className="p-3 rounded bg-[#0f204e] text-white placeholder:text-white placeholder:text-lg outline-none border-none w-[80%]"
+                className="p-3 rounded bg-[#0f204e] text-white placeholder:text-white placeholder:text-lg outline-none border-none "
               />
               <input
                 dir={lang === "en" ? "ltr" : "rtl"}
