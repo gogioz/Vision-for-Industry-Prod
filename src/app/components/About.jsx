@@ -8,7 +8,7 @@ export default function Home() {
     const video = videoRef.current;
     if (!video) return;
 
-    // Autoplay with sound may be blocked by browsers —
+    // Autoplay with sound may be blocked by browsers — 
     // so start muted, and unmute on click or interaction.
     video.play().catch(() => {
       console.log("Autoplay with sound blocked, waiting for user interaction.");
