@@ -121,7 +121,7 @@ export default function Features({ lang }) {
     },
     {
       name: "T-shirts",
-      trans: "قمصان",
+      trans: "تيشرتات",
       images: [
         "/t-shirt/1.jpg",
         "/t-shirt/2.jpg",
@@ -135,7 +135,7 @@ export default function Features({ lang }) {
     },
     {
       name: "Shirts",
-      trans: "تيشرتات",
+      trans: "قمصان",
       images: [
         "/shirt/1.jpg",
         "/shirt/2.jpg",
@@ -176,6 +176,20 @@ export default function Features({ lang }) {
       ],
     },
     {
+      name: "Graduation Capes",
+      trans: "عباءات التخرج",
+      images: [
+        "/cape/1.jpg",
+        "/cape/2.png",
+        "/cape/3.jpg",
+        "/cape/4.png",
+        "/cape/5.jpg",
+        "/cape/6.png",
+        "/cape/7.jpg",
+        "/cape/8.png",
+      ],
+    },
+    {
       name: "Backbags",
       trans: "حقائب الظهر",
       images: [
@@ -190,17 +204,17 @@ export default function Features({ lang }) {
       ],
     },
     {
-      name: "Graduation Capes",
-      trans: "عباءات التخرج",
+      name: "Various Items",
+      trans: "قطع مختلفة",
       images: [
-        "/cape/1.jpg",
-        "/cape/2.png",
-        "/cape/3.jpg",
-        "/cape/4.png",
-        "/cape/5.jpg",
-        "/cape/6.png",
-        "/cape/7.jpg",
-        "/cape/8.png",
+        "/various/1.jpeg",
+        "/various/2.jpg",
+        "/various/3.webp",
+        "/various/4.webp",
+        "/various/5.jpg",
+        "/various/6.jpg",
+        "/various/7.jpeg",
+        "/various/8.jpg",
       ],
     },
   ];
@@ -211,16 +225,28 @@ export default function Features({ lang }) {
   // Reset scroll position when selected changes
   useEffect(() => {
     if (!scrollerRef.current) return;
-
     const timer = setTimeout(() => {
       scrollerRef.current.scrollTo({
         left: lang === "en" ? 0 : scrollerRef.current.scrollWidth,
         behavior: "smooth",
       });
     }, 100);
-
     return () => clearTimeout(timer);
   }, [selected, lang]);
+
+  // Auto-change selected every 30s
+  useEffect(() => {
+    let index = content.findIndex((item) => item.name === selected);
+
+    const interval = setInterval(() => {
+      index = (index + 1) % content.length;
+      setSelected(content[index].name);
+    }, 10000); // 30 seconds
+
+    return () => clearInterval(interval);
+  }, [selected]);
+
+  // --- Optional: Hover to pause ---
 
   return (
     <section className="w-screen text-[#0f204e] bg-gray-100 py-16 mt-12 overflow-hidden">
@@ -235,7 +261,7 @@ export default function Features({ lang }) {
         dir="ltr"
       >
         {/* Sidebar Buttons */}
-        <div className="flex lg:flex-col flex-row gap-3 lg:w-[25%] w-full overflow-x-auto md:overflow-y-auto p-2 h-auto lg:h-[680px] scroller">
+        <div className="flex lg:flex-col flex-row gap-3 lg:w-[25%] 2xl:w-[20%] w-full overflow-x-auto md:overflow-y-auto p-2 h-auto lg:h-[680px] scroller">
           {content.map((item) => (
             <button
               key={item.name}
@@ -251,7 +277,7 @@ export default function Features({ lang }) {
           ))}
         </div>
 
-        {/* ✅ Image Scroller on small & medium screens | Grid on large screens */}
+        {/* Image Section */}
         <div className="w-full">
           {/* Mobile / tablet view (horizontal scroller) */}
           <div
@@ -261,10 +287,7 @@ export default function Features({ lang }) {
             {selectedContent.images.map((src, i) => (
               <div
                 key={i}
-                className="
-                  flex justify-center items-center snap-center shrink-0
-                  w-full md:w-1/2
-                "
+                className="flex justify-center items-center snap-center shrink-0 w-full md:w-1/2"
               >
                 <img
                   src={src}
@@ -276,7 +299,7 @@ export default function Features({ lang }) {
           </div>
 
           {/* Desktop view (grid) */}
-          <div className="hidden lg:grid  lg:grid-cols-4 gap-8">
+          <div className="hidden lg:grid lg:grid-cols-4 gap-8">
             {selectedContent.images.map((src, i) => (
               <div
                 key={i}
