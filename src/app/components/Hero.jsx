@@ -3,27 +3,18 @@ import { useRef, useEffect } from "react";
 
 export default function Home() {
   const videoRef = useRef(null);
+
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            video.play(); // play when visible
-          } else {
-            video.pause(); // pause when out of view
-          }
-        });
-      },
-      { threshold: 0.5 } // triggers when at least 50% visible
-    );
-
-    observer.observe(video);
-
-    return () => observer.disconnect();
+    // Autoplay with sound may be blocked by browsers — 
+    // so start muted, and unmute on click or interaction.
+    video.play().catch(() => {
+      console.log("Autoplay with sound blocked, waiting for user interaction.");
+    });
   }, []);
+
   const handlePlayWithSound = () => {
     const video = videoRef.current;
     if (video) {
@@ -33,15 +24,15 @@ export default function Home() {
   };
 
   return (
-    <div className="w-screen mt-32 lg:flex lg:justify-center lg:items-center  2xl:mt-36">
-      <div className="w-full flex justify-center items-center lg:rounded-xl overflow-hidden ">
+    <div className="w-screen mt-32 lg:flex lg:justify-center lg:items-center 2xl:mt-36">
+      <div className="w-full flex justify-center items-center lg:rounded-xl overflow-hidden">
         <video
           ref={videoRef}
-          className="w-full lg:w-[80%] xl:w-[70%] 2xl:w-[60%] h-auto lg:rounded-xl"
+          className="w-full lg:w-[80%] xl:w-[60%] h-auto lg:rounded-xl"
           loop
           autoPlay
           playsInline
-          muted
+          muted // starts muted to allow autoplay; unmuted on click
           onClick={handlePlayWithSound}
         >
           <source src="/Video.mp4" type="video/mp4" />
